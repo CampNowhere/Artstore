@@ -40,5 +40,29 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
     add_index :users, :reset_password_token, unique: true
     # add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true
+
+    create_table :products do |t|
+      t.string :title
+      t.text :description
+      t.decimal :price, precision: 8, scale: 2
+    end
+
+    
+    create_table :orders do |t|
+      t.belongs_to :user
+      t.integer :status
+    end
+    
+    create_table :order_items do |t|
+      t.belongs_to :order
+      t.belongs_to :product
+      t.integer :quantity
+      t.text :notes
+    end
+
+    create_table :shipments do |t|
+      t.decimal :cost, precision: 6, scale: 2
+      
+    end
   end
 end

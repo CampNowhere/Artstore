@@ -10,7 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_07_184605) do
+ActiveRecord::Schema.define(version: 2020_02_08_012054) do
+
+  create_table "order_items", force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "product_id"
+    t.integer "quantity"
+    t.text "notes"
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["product_id"], name: "index_order_items_on_product_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "status"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.decimal "price", precision: 8, scale: 2
+    t.integer "tax_class_id"
+  end
+
+  create_table "shipments", force: :cascade do |t|
+    t.decimal "cost", precision: 6, scale: 2
+  end
+
+  create_table "tax_classes", force: :cascade do |t|
+    t.string "name"
+    t.float "rate", default: 0.0
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
