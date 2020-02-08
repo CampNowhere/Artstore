@@ -1,0 +1,33 @@
+@import "bootstrap";
+
+$text-color: #444444;
+
+body {
+  margin: 0 auto;
+  padding: 0 auto;
+  background-color: #cdcdcd;
+  font-family: "Open Sans", sans-serif;
+  color: $text-color;
+}
+
+.fat-header {
+  margin: 0;
+  padding: 0;
+  background-image: image-url("Haley-Flowers.jpg");
+  background-size: 100%;
+  height: 1000px;
+  padding-top: 20px;
+
+  h1 {
+    margin-top: 0;
+  }
+}
+
+.headline {
+  font-family: "Girassol", cursive;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  letter-spacing: 10px;
+  font-size: 48px;
+}
